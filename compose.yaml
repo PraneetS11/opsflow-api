@@ -1,15 +1,15 @@
-name: opsflow
+name: careready
 services:
   postgres:
     image: postgres:17-alpine
     environment:
-      POSTGRES_USER: opsflow
+      POSTGRES_USER: careready
       POSTGRES_PASSWORD: local-development-only
-      POSTGRES_DB: opsflow
+      POSTGRES_DB: careready
     ports: ["127.0.0.1:5434:5432"]
     volumes: ["postgres_data:/var/lib/postgresql/data"]
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U opsflow -d opsflow"]
+      test: ["CMD-SHELL", "pg_isready -U careready -d careready"]
       interval: 5s
       timeout: 3s
       retries: 20
