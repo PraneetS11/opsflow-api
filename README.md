@@ -1,12 +1,14 @@
-# OpsFlow API
+# CareReady
 
-### Staff and device readiness for multi-site care organizations
+**Staff & Device Readiness for Multi-site Care Organizations**
 
-OpsFlow helps IT teams at multi-site care organizations get staff equipment ready before a start date and recover it reliably when a placement ends. It connects staff-readiness requests, device reservations, vendor fulfillment, approvals, deliveries, and evidence across locations and organizations.
+Repository and Python package: `careready-api`.
+
+CareReady helps IT teams at multi-site care organizations get staff equipment ready before a start date and recover it reliably when a placement ends. It connects staff-readiness requests, device reservations, vendor fulfillment, approvals, deliveries, and evidence across locations and organizations.
 
 ## Product context
 
-A fictional Canadian care network operates six locations with a small central IT team. New hires, rotating placements, and location transfers create time-sensitive equipment requests. Today a request may be marked complete in a ticket while the laptop is still with a vendor or missing its handoff record. OpsFlow makes that readiness gap explicit.
+A fictional Canadian care network operates six locations with a small central IT team. New hires, rotating placements, and location transfers create time-sensitive equipment requests. Today a request may be marked complete in a ticket while the laptop is still with a vendor or missing its handoff record. CareReady makes that readiness gap explicit.
 
 A site coordinator submits a starter-kit request with a start date and role template. IT reserves an available device or requests a purchase. A separate budget approver reviews the spend, a vendor fulfills the order, and the receiving site confirms delivery and custody. At placement end, IT tracks the return, inspection, and wipe evidence before releasing a device for reuse.
 
@@ -26,6 +28,8 @@ Implemented and available now:
 Business endpoints, domain tables, migrations, authentication, authorization, tenant enforcement, and background workers are **planned, not implemented**. This is not yet a production service. Health routes do not expose business data.
 
 ## Local quick start
+
+Clone with `git clone git@github.com:PraneetS11/careready-api.git`, then `cd careready-api`.
 
 Requires Python 3.12, Git, and Docker Desktop running. Run from this repository:
 
@@ -83,6 +87,9 @@ docs/               Architecture, roadmap, and development notes
 - [Architecture and decisions](docs/ARCHITECTURE.md)
 - [Milestones and acceptance criteria](docs/ROADMAP.md)
 - [Development and deployment](docs/DEVELOPMENT.md)
+- [Build progression and commit checkpoints](docs/BUILD_PROGRESSION.md)
+- [Personal progress log](docs/PROGRESS.md)
+- [CareReady build guide (PDF)](docs/CareReady_Watch_Build_Guide.pdf)
 
 ## Configuration
 

@@ -19,7 +19,7 @@ Review the diff for secrets and unrelated files before committing. Make one focu
 
 ## Local service isolation
 
-OpsFlow: API 8002, PostgreSQL 5434, Redis 6382. Compose uses its own named volume and network. Local credentials are deliberately non-production. Copy `.env.example` without overwriting an existing `.env`.
+CareReady: API 8002, PostgreSQL 5434, Redis 6382. Compose uses its own named volume and network. Local credentials are deliberately non-production. Copy `.env.example` without overwriting an existing `.env`.
 
 ## Dependency updates
 
@@ -35,8 +35,8 @@ The lock is a pinned Python environment snapshot, not a cryptographically verifi
 ## Container smoke test
 
 ```bash
-docker build -t opsflow-api:dev .
-docker run --rm -p 127.0.0.1:8002:8000 --env-file .env opsflow-api:dev
+docker build -t careready-api:dev .
+docker run --rm -p 127.0.0.1:8002:8000 --env-file .env careready-api:dev
 ```
 
 Inside a container, 127.0.0.1 means the container itself. For readiness with Mac-hosted Compose ports, set DATABASE_URL and REDIS_URL to host.docker.internal instead of 127.0.0.1, or attach an API service to the Compose network and use postgres:5432 and redis:6379. The Dockerfile is a starting recipe; the supplied Compose file runs dependencies only.
@@ -44,3 +44,7 @@ Inside a container, 127.0.0.1 means the container itself. For readiness with Mac
 ## Planned hosted release
 
 Deploy API and workers separately; run Alembic as a controlled release step once migrations exist. Configure managed PostgreSQL, private Redis, secret storage, TLS, allowed hosts/origins, rate limiting, structured logs, metrics, backups, and restore drills. Use /health/live for restarts and /health/ready for traffic gating. No hosted deployment is provisioned by this starter.
+
+## Timestamp-aligned development
+
+Use BUILD_PROGRESSION.md for watch ranges and exact commit checkpoints, and PROGRESS.md to record real dates, SHAs, and evidence. Video time is a pause marker; commit only after the relevant behavior and tests pass. Existing setup commits are already complete and must not be recreated.

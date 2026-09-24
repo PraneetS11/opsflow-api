@@ -1,6 +1,6 @@
-# Technology evidence map
+# CareReady technology evidence map
 
-The following features are planned unless marked foundation. Each technology must support a visible behavior and a test; dependency installation alone is not evidence of proficiency.
+CareReady serves staff and device readiness across care sites. The following features are planned unless marked foundation. Each technology must support a visible behavior and a test; dependency installation alone is not evidence of proficiency.
 
 | Technology / concept | Product use | Demonstration or acceptance evidence |
 |---|---|---|

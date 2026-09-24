@@ -1,4 +1,4 @@
-# OpsFlow architecture
+# CareReady architecture
 
 Product boundary: staff and device readiness for multi-site care organizations. See PRODUCT.md for the fictional scenario and explicit exclusions.
 
@@ -18,10 +18,10 @@ Every tenant-owned table carries organization_id. Resolve organization membershi
 
 ## Domain model direction
 
-Organization -> locations, memberships, employees, vendors, assets, shipments, provisioning requests, approvals, evidence, audit events.
+Organization -> sites, memberships, staff placements, kit templates, readiness requests, vendors, assets, reservations, assignments, shipments, purchase approvals, return cases, evidence, and audit events.
 User -> organization memberships; roles belong to membership rather than global user.
-AssetAssignment links an employee and asset with assigned/returned timestamps.
-Shipment links a vendor and provisioning request; immutable shipment events capture progress.
+Assignment links a staff placement and asset with assigned/returned timestamps.
+Shipment links a vendor and readiness request; immutable shipment events capture progress.
 Approval captures reviewer, decision, reason, and request version.
 
 ## Business invariants
@@ -35,7 +35,7 @@ Approval captures reviewer, decision, reason, and request version.
 
 ## Authorization plan
 
-Organization admin: memberships and policy. IT operator: assets and provisioning. Approver: scoped approval decisions. Employee: own requests and assignments. Auditor: read-only evidence and audit history. Deny by default and test both role and tenant boundaries.
+Organization admin: memberships and policy. IT operator: stock reservation, setup, custody, and returns. Approver: scoped approval decisions. Staff member: own requests and assignments. Site coordinator: scoped placement and kit requests. Auditor: read-only evidence and audit history. Deny by default and test both role and tenant boundaries.
 
 ## Security and reliability progression
 
