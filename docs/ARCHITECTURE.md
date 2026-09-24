@@ -27,7 +27,7 @@ Approval captures reviewer, decision, reason, and request version.
 ## Business invariants
 
 - One active assignment per asset; enforce under a database transaction with a unique constraint or lock.
-- Provisioning: draft -> submitted -> approved/rejected -> fulfilling -> completed. Reject invalid transitions with 409.
+- Readiness request: draft -> submitted -> approved -> preparing -> dispatched -> ready, with explicit rejected/cancelled alternatives. Derive readiness from required allocation, delivery, and setup checks. Reject invalid transitions with 409.
 - A requester cannot approve their own request; approvals above a policy threshold require a second reviewer.
 - Offboarding remains open until assigned assets are returned or an authorized exception is recorded.
 - Audit events include tenant, actor, action, object, timestamp, and correlation ID; exclude secrets and unnecessary personal data.
