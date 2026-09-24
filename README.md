@@ -1,10 +1,16 @@
 # OpsFlow API
 
-An IT operations backend for multi-location businesses managing employee equipment from onboarding through offboarding. OpsFlow is designed to connect asset custody, vendor fulfillment, approvals, shipment tracking, and operational evidence in one tenant-aware system.
+### Staff and device readiness for multi-site care organizations
+
+OpsFlow helps IT teams at multi-site care organizations get staff equipment ready before a start date and recover it reliably when a placement ends. It connects staff-readiness requests, device reservations, vendor fulfillment, approvals, deliveries, and evidence across locations and organizations.
 
 ## Product context
 
-A fictional Canadian professional-services company has 250 employees across Toronto, Waterloo, and remote locations. A new hire needs an approved laptop, an assigned asset, vendor fulfillment, delivery confirmation, and a custody record before their first day. Offboarding must recover equipment and record evidence. This is a product design scenario, not a claim of an existing customer or production deployment.
+A fictional Canadian care network operates six locations with a small central IT team. New hires, rotating placements, and location transfers create time-sensitive equipment requests. Today a request may be marked complete in a ticket while the laptop is still with a vendor or missing its handoff record. OpsFlow makes that readiness gap explicit.
+
+A site coordinator submits a starter-kit request with a start date and role template. IT reserves an available device or requests a purchase. A separate budget approver reviews the spend, a vendor fulfills the order, and the receiving site confirms delivery and custody. At placement end, IT tracks the return, inspection, and wipe evidence before releasing a device for reuse.
+
+This independently designed product is motivated by my interest in IT support and workflow automation. It uses fictional organizations and staff; it is not affiliated with an employer, does not reproduce an internal system, and does not handle patient records or clinical decisions.
 
 ## Current status: foundation
 
@@ -47,11 +53,11 @@ curl --fail http://127.0.0.1:8002/health/ready
 
 ## Planned delivery
 
-1. Vendor and asset schemas, validation, pagination, and service boundaries.
+1. Site, vendor, staff-readiness request, and asset schemas with validation and service boundaries.
 2. PostgreSQL persistence with SQLModel, async sessions, and Alembic migrations.
 3. User registration, Argon2 password hashing, JWT access and rotating refresh tokens.
 4. Organizations, memberships, tenant isolation, and role-based authorization.
-5. Employee onboarding/offboarding, asset assignment, shipment events, and approval state machines.
+5. Start-date readiness, stock reservation, staff onboarding/offboarding, shipment events, and approval state machines.
 6. Append-only audit records, compliance evidence, request logging, and safe error contracts.
 7. Redis-backed revocation and caching; Celery jobs with retries and idempotency.
 8. Integration/security tests, container deployment, backup/restore, and operational monitoring.
@@ -72,6 +78,8 @@ docs/               Architecture, roadmap, and development notes
 
 ## Documentation
 
+- [Product brief and realistic scope](docs/PRODUCT.md)
+- [Technology-to-feature evidence map](docs/TECHNOLOGY_MAP.md)
 - [Architecture and decisions](docs/ARCHITECTURE.md)
 - [Milestones and acceptance criteria](docs/ROADMAP.md)
 - [Development and deployment](docs/DEVELOPMENT.md)

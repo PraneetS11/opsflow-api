@@ -1,5 +1,7 @@
 # OpsFlow architecture
 
+Product boundary: staff and device readiness for multi-site care organizations. See PRODUCT.md for the fictional scenario and explicit exclusions.
+
 ## Implemented foundation
 
 HTTP -> FastAPI router -> health probes -> async PostgreSQL engine / Redis client.
@@ -44,3 +46,9 @@ Workers receive identifiers and tenant context, recheck authorization where appr
 ## Decisions
 
 Python 3.12 matches the local interpreter. FastAPI provides HTTP composition; SQLModel will define domain tables over SQLAlchemy's async engine. PostgreSQL is the source of truth. Redis is disposable support infrastructure, not authoritative inventory storage. One deployable API first; split services only when operational evidence justifies it.
+
+## Readiness and reuse decisions
+
+A StaffPlacement defines the start/end dates and site. KitTemplate defines required equipment and setup checks. Readiness is derived from approved scope, allocation, delivery, and completed checks. Keep date-only business deadlines in the site timezone; store event timestamps in UTC.
+
+Reservations must be atomic and expiring. Releasing expired reservations is an idempotent scheduled job. ReturnCase holds inspection and wipe evidence; only a completed return releases an asset to available state. Store no patient data. A manual vendor/shipping adapter is sufficient for the MVP.

@@ -37,3 +37,9 @@ Acceptance: implement the smallest end-to-end behavior, document its API, add su
 ## Release gates
 
 Tenant isolation tests must cover list/detail/update/delete, nested relationships, background jobs, cache keys, and audit exports. Test refresh-token replay, revoked sessions, self-approval, duplicate assignment races, duplicate shipment callbacks, failed worker retries, and offboarding exceptions. Run integration tests against PostgreSQL rather than substituting SQLite for constraint behavior.
+
+## Domain-specific acceptance gates
+
+First vertical slice: fictional Cedar Care site -> staff placement -> kit request -> stock reservation -> independent approval when needed -> shipment -> readiness checklist -> custody -> return -> wipe evidence -> reusable stock. Build one transition per focused increment.
+
+Then test concurrent reservations, stale approvals after amount changes, overdue delivery, expired reservations, duplicate shipment events, tenant-scoped reminder jobs, and blocked reuse without wipe evidence. Product measures must be derived from recorded events and must not be advertised as achieved improvements before measurement.
